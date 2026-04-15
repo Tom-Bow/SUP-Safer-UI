@@ -26,6 +26,8 @@ export default function App() {
     const [waveLevel, setWaveLevel] = useState("");
     const [waveInput, setWaveInput] = useState("");
 
+    const [retrievalTime, setRetrievalTime] = useSatet("");
+
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -44,6 +46,7 @@ export default function App() {
                 setWaveInput(data.input.wave);
                 setWindInput(data.input.wind);
                 setDirectionInput(data.input.wind_dir);
+                setRetrievalTime(new Date(data.input.reqeusted_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
 
                 let tide_flow = Math.round(data.input.tide_flow * 100) / 100;
                 setTideInput(tide_flow);
@@ -87,7 +90,7 @@ export default function App() {
                     title="Paddleboard Risk Tool"
                     location="Swansea Beach"
                     date={currentDate}
-                    time={currentTime}
+                    time={retrievalTime} //Set to time that data was originally retrieved (not time that page was loaded)
                 />
 
                 <div className="mb-6 sm:mb-8">
