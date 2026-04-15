@@ -26,7 +26,7 @@ export default function App() {
     const [waveLevel, setWaveLevel] = useState("");
     const [waveInput, setWaveInput] = useState("");
 
-    const [retrievalTime, setRetrievalTime] = useSatet("");
+    const [retrievalTime, setRetrievalTime] = useState("");
 
     const [loading, setLoading] = useState(false);
 
