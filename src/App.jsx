@@ -46,7 +46,7 @@ export default function App() {
                 setWaveInput(data.input.wave);
                 setWindInput(data.input.wind);
                 setDirectionInput(data.input.wind_dir);
-                setRetrievalTime(new Date(data.input.reqeusted_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
+                setRetrievalTime(new Date(data.input.requested_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
 
                 let tide_flow = Math.round(data.input.tide_flow * 100) / 100;
                 setTideInput(tide_flow);
