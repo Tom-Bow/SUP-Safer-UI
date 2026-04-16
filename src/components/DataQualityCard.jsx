@@ -18,7 +18,7 @@ export function DataQualityCard({ date, time, isCached, isFallback, isFresh }) {
             : "Live data";
 
     const message = isFallback
-        ? "Live environmental data is temporarily unavailable, PROCEED WITH CAUTION and verify that the conditions shown here match those at your location. Showing fallback data "
+        ? "Live environmental data is temporarily unavailable. The information shown may be outdated - please check local conditions before going on the water."
         : isCached
             ? "Showing recently cached conditions"
             : isFresh
@@ -29,7 +29,17 @@ export function DataQualityCard({ date, time, isCached, isFallback, isFresh }) {
         <div className={`mb-6 rounded-xl border p-3 sm:p-3 ${containerClasses}`}>
             <p className={`text-sm ${textClasses}`}>
                 <span className="font-medium">{statusLabel}:</span>{" "}
-                {message} retrieved at <span className="font-medium">{time}</span> on <span className="font-medium">{date}</span>.
+
+                {!isFallback &&
+                    <>
+                        {message} retrieved at <span className="font-medium">{time}</span> on <span className="font-medium">{date}</span>.
+                    </>
+                }
+                {isFallback && 
+                <>
+                {message} Last updated <span className="font-medium">{date}</span> at <span className="font-medium">{time}</span>
+                </>
+                }
             </p>
         </div>
     );

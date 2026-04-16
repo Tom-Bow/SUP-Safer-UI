@@ -5,7 +5,7 @@ import { RiskIndicator } from "./components/RiskIndicator";
 import { TrafficLight } from "./components/TrafficLight";
 import { RefreshModal } from "./components/RefreshModal";
 import { LoadingModal } from "./components/LoadingModal";
-import { Wind, Waves, Thermometer, Eye, Droplets, Gauge, Compass } from 'lucide-react';
+import { Wind, Waves, Thermometer, Droplets, Gauge, Compass } from 'lucide-react';
 import { DataQualityCard } from "./components/DataQualityCard";
 
 export default function App() {
@@ -195,32 +195,11 @@ export default function App() {
                                     status="normal"
                                     details={tideStateType + " Tide at: " + nextTideTime}
                                 />
-                                {/* <ConditionCard
-                                    icon={Eye}
-                                    label="Visibility"
-                                    value="Good"
-                                    status="normal"
-                                    details="10+ km range"
-                                /> */}
                             </div>
                         </div>
-
-                        {/* <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
-                            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-4 sm:mb-6">Risk Factor Analysis</h3>
-                            <div className="space-y-3 sm:space-y-4">
-                                <RiskFactorBar label="Wind Speed Impact" value={65} maxValue={100} />
-                                <RiskFactorBar label="Wave Conditions" value={55} maxValue={100} />
-                                <RiskFactorBar label="Water Temperature" value={45} maxValue={100} />
-                                <RiskFactorBar label="Current Strength" value={50} maxValue={100} />
-                                <RiskFactorBar label="Visibility" value={15} maxValue={100} />
-                                <RiskFactorBar label="Tidal Influence" value={30} maxValue={100} /> 
-                            </div>
-                        </div> */}
                     </div>
 
                     <div className="space-y-4 sm:space-y-6">
-                        {/* <RecommendationPanel level={riskLevel} /> */}
-
                         <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
                             <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-4">Risk Classification</h3>
                             <div className="space-y-3 sm:space-y-4">

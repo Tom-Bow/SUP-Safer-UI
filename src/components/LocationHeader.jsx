@@ -1,4 +1,4 @@
-import { MapPin, Calendar, Clock } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { DataQualityCard } from './DataQualityCard';
 
 export function LocationHeader({ title, location, date, time }) {
