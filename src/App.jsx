@@ -6,6 +6,7 @@ import { TrafficLight } from "./components/TrafficLight";
 import { RefreshModal } from "./components/RefreshModal";
 import { LoadingModal } from "./components/LoadingModal";
 import { Wind, Waves, Thermometer, Eye, Droplets, Gauge, Compass } from 'lucide-react';
+import { DataQualityCard } from "./components/DataQualityCard";
 
 export default function App() {
     const [riskLevel, setRiskLevel] = useState("");
@@ -30,6 +31,11 @@ export default function App() {
 
     const [loading, setLoading] = useState(false);
 
+    const [error, setError] = useState("");
+    const [isFallback, setIsFallback] = useState(false);
+    const [isCached, setIsCached] = useState(false);
+    const [isFresh, setIsFresh] = useState(false);
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -38,26 +44,56 @@ export default function App() {
             try {
                 const result = await fetch("https://swansea-conditions-tool.onrender.com/risk/from-weather?lat=51.609058&lon=-3.972443");
                 const data = await result.json();
-                setRiskLevel(data.risk);
-                setWindLevel(data.component_risk.wind);
-                setDirectionLevel(data.component_risk.direction);
-                setTideLevel(data.component_risk.tide);
-                setWaveLevel(data.component_risk.wave);
-                setWaveInput(data.input.wave);
-                setWindInput(data.input.wind);
-                setDirectionInput(data.input.wind_dir);
-                setRetrievalTime(new Date(data.input.requested_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
 
-                let tide_flow = Math.round(data.input.tide_flow * 100) / 100;
-                setTideInput(tide_flow);
-                setTideState(data.tides.tide_state);
-                setTideStateType(data.tides.next_tide.type);
-                setNextTideTime(new Date(data.tides.next_tide.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
-                setWaterTemp(data.tides.water_temp);
+                if (!result.ok) {
+                    throw new Error(data.detail || "Unable to retrieve live conditions");
+                }
+
+                setRiskLevel(data.risk ?? "");
+                setWindLevel(data.component_risk?.wind ?? "normal");
+                setDirectionLevel(data.component_risk?.direction ?? "normal");
+                setTideLevel(data.component_risk?.tide ?? "normal");
+                setWaveLevel(data.component_risk?.wave ?? "normal");
+
+                setWaveInput(data.input?.wave ?? "");
+                setWindInput(data.input?.wind ?? "");
+                setDirectionInput(data.input?.wind_dir ?? "");
+                setRetrievalTime(
+                    data.input?.requested_at
+                        ? new Date(data.input.requested_at).toLocaleTimeString('en-GB', {
+                            hour: '2-digit', minute: '2-digit'
+                        })
+                        : "Unavailable"
+                );
+
+                setTideInput(
+                    data.input?.tide_flow !== undefined && data.input?.tide_flow !== null
+                        ? Math.round(data.input.tide_flow * 100) / 100
+                        : ""
+                );
+                setTideState(data.tides?.tide_state ?? "");
+                setTideStateType(data.tides?.next_tide?.type ?? "");
+                setNextTideTime(
+                    data.tides?.next_tide?.time
+                        ? new Date(data.tides.next_tide.time).toLocaleTimeString("en-GB", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        })
+                        : ""
+                );
+                setWaterTemp(data.tides?.water_temp ?? "");
+
+                setIsFallback(Boolean(data.fallback));
+                setIsCached(Boolean(data.cached));
+                setIsFresh(Boolean(data.fresh));
+
+
                 console.log("DATA RECEIEVED");
                 console.log(data);
+
             } catch (err) {
-                console.error("Error fetching data:", err)
+                console.error("Error fetching data:", err);
+                setError(err.message || "Unable to retrieve conditions right now.");
             } finally {
                 console.log("Loading Complete");
                 setLoading(false);
@@ -92,7 +128,15 @@ export default function App() {
                     date={currentDate}
                     time={retrievalTime} //Set to time that data was originally retrieved (not time that page was loaded)
                 />
-
+                {!error &&
+                    <DataQualityCard
+                        time={retrievalTime}
+                        date={currentDate}
+                        isCached={isCached}
+                        isFallback={isFallback}
+                        isFresh={isFresh}
+                    />
+                }
                 <div className="mb-6 sm:mb-8">
                     <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
                         <div className="flex-shrink-0">
