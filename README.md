@@ -1,16 +1,47 @@
-# React + Vite
+# 🌊 Paddleboard Risk Tool – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React web application that visualises real-time environmental conditions and classifies paddleboarding risk levels at Swansea Beach.
 
-Currently, two official plugins are available:
+This project is part of a dissertation titled:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**“Development of a Non-Compensatory Risk Classification System for Paddleboarding at Swansea Beach”**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🌦️ Real-time environmental data (wind, waves, tide, temperature)
+- 🚦 Traffic-light risk classification (LOW / MEDIUM / HIGH / VERY HIGH)
+- 📊 Component-level risk breakdown
+- 🌍 Location-based data (Swansea Beach)
+- 🔄 Data quality indicators:
+  - Live data
+  - Cached data
+  - Fallback data
+- 📱 Fully responsive UI (mobile-first design)
+- 🎨 Clean, modern interface using Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 How It Works
+
+The frontend fetches processed environmental data from a FastAPI backend and visualises:
+
+- Wind speed & direction
+- Wave height
+- Tidal flow
+- Water temperature
+- Tide state & next tide event
+
+The backend applies a rule-based classification algorithm to produce a simplified **risk level** for novice users.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React (Vite)**
+- **Tailwind CSS**
+- **Lucide React Icons**
+- **Fetch API**
+
+---
