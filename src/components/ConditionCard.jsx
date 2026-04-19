@@ -8,6 +8,7 @@ export function ConditionCard({ icon: Icon, label, value, status, details }) {
   const tide = label == "Tide Strength";
   const waterTemp = label == "Water Temperature";
   const tideTime = label == "Tide Status";
+  const hasValue = value !== null && value !== undefined && value !== "";
 
 const getCompassDirection = (degrees) => {
   const directions = [
@@ -143,7 +144,7 @@ const getCompassDirection = (degrees) => {
         <div className="flex-1 min-w-0">
           <div className="text-xs sm:text-sm text-gray-600 mb-1">{label}</div>
           <div className="text-xl sm:text-2xl font-light text-gray-900 mb-1">
-            {value !== null && value !== undefined && value !== "" ? (
+            {hasValue ? (
               <>
               {value}
               {wind && details}
@@ -155,10 +156,10 @@ const getCompassDirection = (degrees) => {
             ) : ("Currently Unavailable")}
           </div>
           {details && <div className="text-xs text-gray-500 truncate">{getDescription()}</div>}
-          {waterTemp && value && <div className="text-xs text-gray-500 truncate">{wetsuitRating()} Wetsuit Recommended (Minimum)</div>}
-          {tideTime && value && <div className="text-xs text-gray-500 truncate">{details}</div>}
+          {waterTemp && hasValue && <div className="text-xs text-gray-500 truncate">{wetsuitRating()} Wetsuit Recommended (Minimum)</div>}
+          {tideTime && hasValue && <div className="text-xs text-gray-500 truncate">{details}</div>}
         </div>
-        {direction && value && (
+        {direction && hasValue && (
           <div className="absolute top-1/2 right-4 -translate-y-1/2">
             <WindDirectionTile direction={value} />
           </div>

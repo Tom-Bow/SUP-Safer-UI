@@ -23,25 +23,9 @@ export function WindDirectionTile({ direction }) {
                     bg-white/10">
                     <ArrowUp
                         className="w-[20px] h-[20px] sm:w-[28px] sm:h-[28px] text-white transition-transform duration-700 ease-out"
-                        style={{ transform: `rotate(${direction}deg)` }}
+                        style={{ transform: `rotate(${deg}deg)` }}
                     />
                 </div>
-
-                {/* <svg
-                    className="w-[28px] h-[28px] sm:w-[40px] sm:h-[40px]
-                     transition-transform duration-700 ease-out"
-                    style={{ transform: `rotate(${direction}deg)` }}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                >
-                    <path
-                        d="M12 4 L12 18 M12 4 L8 8 M12 4 L16 8"
-                        stroke="white"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    />
-                </svg> */}
             </div>
         </div>
     );
