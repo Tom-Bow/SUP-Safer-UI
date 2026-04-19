@@ -240,7 +240,7 @@ return (
                         <p className="text-xs text-blue-700 leading-relaxed">
                             This risk assessment system uses real-time environmental data and established safety
                             parameters to provide paddleboarders with an informed decision-making tool for
-                            water sports activities at Swansea Beach.
+                            water sports activities at Swansea Beach. This tool should not replace professional judgement.
                         </p>
                     </div>
 
