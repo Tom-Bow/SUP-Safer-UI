@@ -42,7 +42,7 @@ export default function App() {
             console.log("Loading Started");
 
             try {
-                const result = await fetch("https://swansea-conditions-tool.onrender.com/risk/from-weather?lat=51.609058&lon=-3.972443");
+                const result = await fetch("https://api.sup-safer.co.uk/risk/from-weather?lat=51.609058&lon=-3.972443");
                 const data = await result.json();
 
                 if (!result.ok) {
