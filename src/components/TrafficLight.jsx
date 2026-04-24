@@ -66,10 +66,6 @@ export function TrafficLight({ level, size = 'md' }) {
           )}
         </div>
       </div>
-
-      {/* Pole */}
-      {/* <div className="w-3 h-12 bg-gray-800 rounded-b-lg" />
-      <div className="w-8 h-2 bg-gray-700 rounded-full" /> */}
     </div>
   );
 }
