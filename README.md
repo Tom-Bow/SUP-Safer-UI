@@ -6,6 +6,8 @@ This project is part of the dissertation:
 
 **“Development of a Non-Compensatory Risk Classification System for Paddleboarding at Swansea Beach”**
 
+_Repository 2 of 2._
+
 ## Features
 
 - Real-time environmental data, including wind, waves, tide, and temperature.
@@ -58,6 +60,9 @@ The frontend fetches processed environmental data from a FastAPI backend and vis
 - Tide state and next tide event
 
 The backend applies a rule-based classification algorithm to generate a simplified **risk level** for novice users.
+
+<img width="1135" height="872" alt="image" src="https://github.com/user-attachments/assets/d9dba9e0-119a-4176-a029-cc4b70d8d080" />
+
 
 ## Tech Stack
 
