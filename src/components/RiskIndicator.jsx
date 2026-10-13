@@ -41,7 +41,7 @@ export function RiskIndicator({ level, score }) {
           textColor: 'text-red-700',
           bgLight: 'bg-red-50',
           borderColor: 'border-red-200',
-          description: 'Current conditions are extremely dangerous. Paddleboarding could lead to serious injury or loss of life.'
+          description: 'Current conditions are extremely dangerous. Paddleboarding could lead to serious injury.'
         };
         default:
       return {

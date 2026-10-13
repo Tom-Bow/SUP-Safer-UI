@@ -12,10 +12,10 @@ export function RefreshModal({ onRefresh }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md text-center">
-        <p>Data may be stale. Refresh for latest conditions?</p>
+      <div className="bg-white p-6 rounded-xl shadow-md text-center">
+        <p>Data may be stale. <br />Refresh for latest conditions.</p>
         <button
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+          className="mt-4 bg-[#4ac4a0] transition hover:bg-[#247a76] text-white px-4 py-2 rounded"
           onClick={onRefresh}
         >
           Refresh
