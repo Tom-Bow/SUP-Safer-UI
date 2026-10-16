@@ -1,5 +1,5 @@
-
-import React from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const sections = [
   { id: "introduction", title: "1. Introduction" },
@@ -54,22 +54,20 @@ function PolicyLink({ href, children }) {
 }
 
 export default function PrivacyPolicy() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
   return (
     <main className="min-h-screen bg-[#f7faf9] text-slate-900">
       {/* Hero */}
       <header className="relative isolate overflow-hidden bg-[#102f30]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-32 h-96 w-96 rounded-full opacity-20 blur-3xl"
-          style={{ backgroundColor: "#4ac4a0" }}
-        />
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 left-1/4 h-80 w-80 rounded-full opacity-10 blur-3xl"
-          style={{ backgroundColor: "#4ac4a0" }}
-        />
-
         <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
           <a
             href="/"
@@ -98,9 +96,8 @@ export default function PrivacyPolicy() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-              How SUP Safer handles your information, protects your privacy
-              and uses data to provide its paddleboarding risk assessment
-              service.
+              How SUP Safer handles your information, protects your privacy and
+              uses data to provide its paddleboarding risk assessment service.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-slate-300">
@@ -128,32 +125,6 @@ export default function PrivacyPolicy() {
                   />
                 </svg>
                 Last updated: {lastUpdated}
-              </span>
-
-              <span className="hidden h-4 w-px bg-white/20 sm:block" />
-
-              <span className="inline-flex items-center gap-2">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-4 w-4 text-teal-300"
-                >
-                  <path
-                    d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="m9 12 2 2 4-4"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                UK data protection
               </span>
             </div>
           </div>
@@ -232,9 +203,9 @@ export default function PrivacyPolicy() {
                 and its associated services.
               </p>
               <p>
-                SUP Safer presents environmental information, including
-                weather, wave and tidal conditions, to help users understand
-                the potential risks of paddleboarding at Swansea Beach.
+                SUP Safer presents environmental information, including weather,
+                wave and tidal conditions, to help users understand the
+                potential risks of paddleboarding at Swansea Beach.
               </p>
               <p>
                 This policy should be read alongside any relevant information
@@ -242,19 +213,19 @@ export default function PrivacyPolicy() {
               </p>
             </PolicySection>
 
-            <PolicySection id="controller" title="2. Who is responsible for your information?">
+            <PolicySection
+              id="controller"
+              title="2. Who is responsible for your information?"
+            >
               <p>
                 SUP Safer is operated independently by Thomas Bowden. For
-                personal information processed in connection with the
-                operation of SUP Safer, Thomas Bowden is the data controller
-                where applicable data protection law requires one to be
-                identified.
+                personal information processed in connection with the operation
+                of SUP Safer, Thomas Bowden is the data controller where
+                applicable data protection law requires one to be identified.
               </p>
 
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <p className="font-semibold text-slate-900">
-                  Data controller
-                </p>
+                <p className="font-semibold text-slate-900">Data controller</p>
                 <p className="mt-2">Thomas Bowden, independent developer</p>
                 <p>
                   Website:{" "}
@@ -274,9 +245,9 @@ export default function PrivacyPolicy() {
               </div>
 
               <p>
-                If you have any questions about this policy or how your
-                personal information is handled, you can contact us using the
-                email address above.
+                If you have any questions about this policy or how your personal
+                information is handled, you can contact us using the email
+                address above.
               </p>
             </PolicySection>
 
@@ -285,8 +256,8 @@ export default function PrivacyPolicy() {
                 3.1 Contact form information
               </h3>
               <p>
-                If you contact us through the website's contact form, we
-                collect the information you choose to provide:
+                If you contact us through the website's contact form, we collect
+                the information you choose to provide:
               </p>
               <ul className="list-disc space-y-2 pl-6 marker:text-[#247a76]">
                 <li>
@@ -294,8 +265,8 @@ export default function PrivacyPolicy() {
                   you when responding to your enquiry.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Email address:</strong>{" "}
-                  to reply to your message.
+                  <strong className="text-slate-800">Email address:</strong> to
+                  reply to your message.
                 </li>
                 <li>
                   <strong className="text-slate-800">Message:</strong> to
@@ -308,31 +279,31 @@ export default function PrivacyPolicy() {
               </h3>
               <p>
                 When you visit the website or interact with its API, technical
-                information may be processed by the hosting infrastructure
-                and server systems. Depending on their configuration, this
-                may include your IP address, request date and time, requested
-                pages or endpoints, browser information and error details.
+                information may be processed by the hosting infrastructure and
+                server systems. Depending on their configuration, this may
+                include your IP address, request date and time, requested pages
+                or endpoints, browser information and error details.
               </p>
               <p>
                 This information may be processed to deliver the website,
                 maintain security, diagnose errors and prevent misuse. The
-                information actually recorded depends on the configuration
-                of the relevant services.
+                information actually recorded depends on the configuration of
+                the relevant services.
               </p>
 
               <h3 className="pt-3 font-semibold text-slate-800">
                 3.3 Weather, wave and tidal information
               </h3>
               <p>
-                SUP Safer retrieves environmental information from external
-                data providers to generate its risk assessments. Fixed
-                coordinates associated with Swansea Beach are used to request
-                the relevant conditions.
+                SUP Safer retrieves environmental information from external data
+                providers to generate its risk assessments. Fixed coordinates
+                associated with Swansea Beach are used to request the relevant
+                conditions.
               </p>
               <p>
-                These coordinates identify the assessment location and do
-                not, by themselves, represent your personal location. The
-                core risk assessment does not require your live GPS location.
+                These coordinates identify the assessment location and do not,
+                by themselves, represent your personal location. The core risk
+                assessment does not require your live GPS location.
               </p>
             </PolicySection>
 
@@ -340,9 +311,17 @@ export default function PrivacyPolicy() {
               <p>Where applicable, information is used to:</p>
               <ul className="list-disc space-y-2 pl-6 marker:text-[#247a76]">
                 <li>Provide and maintain the SUP Safer service.</li>
-                <li>Retrieve environmental information and generate risk assessments.</li>
-                <li>Respond to contact form enquiries and related follow-up.</li>
-                <li>Maintain the security, reliability and availability of the website.</li>
+                <li>
+                  Retrieve environmental information and generate risk
+                  assessments.
+                </li>
+                <li>
+                  Respond to contact form enquiries and related follow-up.
+                </li>
+                <li>
+                  Maintain the security, reliability and availability of the
+                  website.
+                </li>
                 <li>Investigate technical errors and prevent misuse.</li>
                 <li>Meet applicable legal obligations.</li>
               </ul>
@@ -353,7 +332,10 @@ export default function PrivacyPolicy() {
               </p>
             </PolicySection>
 
-            <PolicySection id="lawful-basis" title="5. Lawful basis for processing">
+            <PolicySection
+              id="lawful-basis"
+              title="5. Lawful basis for processing"
+            >
               <p>
                 Where the UK General Data Protection Regulation (UK GDPR)
                 applies, we process personal information only where an
@@ -362,7 +344,9 @@ export default function PrivacyPolicy() {
               <p>Depending on the circumstances, this may include:</p>
               <ul className="list-disc space-y-2 pl-6 marker:text-[#247a76]">
                 <li>
-                  <strong className="text-slate-800">Legitimate interests:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Legitimate interests:
+                  </strong>{" "}
                   responding to enquiries, operating the website, maintaining
                   security and diagnosing technical problems, where these
                   interests are not overridden by your rights and interests.
@@ -372,7 +356,9 @@ export default function PrivacyPolicy() {
                   processing necessary to comply with applicable law.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Other applicable bases:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Other applicable bases:
+                  </strong>{" "}
                   where the circumstances of a particular processing activity
                   require a different lawful basis.
                 </li>
@@ -386,10 +372,10 @@ export default function PrivacyPolicy() {
 
             <PolicySection id="contact-form" title="6. Contact form and Resend">
               <p>
-                The website's contact form collects your name, email address
-                and message. Providing this information is voluntary, but a
-                valid email address and sufficient information about your
-                enquiry are needed for us to respond.
+                The website's contact form collects your name, email address and
+                message. Providing this information is voluntary, but a valid
+                email address and sufficient information about your enquiry are
+                needed for us to respond.
               </p>
 
               <h3 className="font-semibold text-slate-800">
@@ -397,10 +383,8 @@ export default function PrivacyPolicy() {
               </h3>
               <p>
                 Contact form submissions are sent using{" "}
-                <PolicyLink href="https://resend.com/">
-                  Resend
-                </PolicyLink>
-                , an email delivery service. The information you submit is
+                <PolicyLink href="https://resend.com/">Resend</PolicyLink>, an
+                email delivery service. The information you submit is
                 transmitted to Resend so that the message can be delivered to
                 the website operator's email address.
               </p>
@@ -438,17 +422,16 @@ export default function PrivacyPolicy() {
                 current configuration known to the operator.
               </p>
               <p>
-                We do not knowingly use non-essential cookies for advertising
-                or visitor profiling. However, the website, its hosting
+                We do not knowingly use non-essential cookies for advertising or
+                visitor profiling. However, the website, its hosting
                 infrastructure or integrated services may use technical
-                mechanisms necessary to deliver, secure or operate the
-                service.
+                mechanisms necessary to deliver, secure or operate the service.
               </p>
               <p>
-                The use of cookies and similar technologies will be reviewed
-                if the website's configuration changes. Where consent is
-                required by applicable law, it will be obtained before the
-                relevant technologies are used.
+                The use of cookies and similar technologies will be reviewed if
+                the website's configuration changes. Where consent is required
+                by applicable law, it will be obtained before the relevant
+                technologies are used.
               </p>
               <p>
                 You can also manage cookies through your browser settings.
@@ -456,7 +439,10 @@ export default function PrivacyPolicy() {
               </p>
             </PolicySection>
 
-            <PolicySection id="sharing" title="8. Who we share information with">
+            <PolicySection
+              id="sharing"
+              title="8. Who we share information with"
+            >
               <p>
                 We do not sell personal information. Information may be
                 processed by third parties where necessary to operate the
@@ -464,7 +450,9 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="list-disc space-y-2 pl-6 marker:text-[#247a76]">
                 <li>
-                  <strong className="text-slate-800">Hosting and infrastructure providers:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Hosting and infrastructure providers:
+                  </strong>{" "}
                   to deliver the website and API and maintain their operation
                   and security.
                 </li>
@@ -473,7 +461,9 @@ export default function PrivacyPolicy() {
                   contact form submissions to our email inbox.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Environmental data providers:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Environmental data providers:
+                  </strong>{" "}
                   to retrieve the weather, wave and tidal information used by
                   the risk assessment service.
                 </li>
@@ -484,28 +474,31 @@ export default function PrivacyPolicy() {
                 service terms may apply.
               </p>
               <p>
-                Information may also be disclosed where required by law or
-                where reasonably necessary to establish, exercise or defend
-                legal claims.
+                Information may also be disclosed where required by law or where
+                reasonably necessary to establish, exercise or defend legal
+                claims.
               </p>
             </PolicySection>
 
-            <PolicySection id="international" title="9. International data transfers">
+            <PolicySection
+              id="international"
+              title="9. International data transfers"
+            >
               <p>
                 Some third-party providers used by SUP Safer may process
                 information outside the United Kingdom. This may include
                 information handled by Resend as part of email delivery.
               </p>
               <p>
-                Where a transfer of personal information is subject to UK
-                data protection law, the required conditions and safeguards
-                must be met. These may include an adequacy decision or an
-                appropriate transfer mechanism, together with any additional
-                measures required in the circumstances.
+                Where a transfer of personal information is subject to UK data
+                protection law, the required conditions and safeguards must be
+                met. These may include an adequacy decision or an appropriate
+                transfer mechanism, together with any additional measures
+                required in the circumstances.
               </p>
               <p>
-                Further information about Resend's arrangements can be found
-                in its{" "}
+                Further information about Resend's arrangements can be found in
+                its{" "}
                 <PolicyLink href="https://resend.com/legal/dpa">
                   Data Processing Addendum
                 </PolicyLink>
@@ -513,7 +506,10 @@ export default function PrivacyPolicy() {
               </p>
             </PolicySection>
 
-            <PolicySection id="retention" title="10. How long we retain information">
+            <PolicySection
+              id="retention"
+              title="10. How long we retain information"
+            >
               <p>
                 We retain personal information for as long as reasonably
                 necessary for the purpose for which it was collected, taking
@@ -522,7 +518,9 @@ export default function PrivacyPolicy() {
               <p>In particular:</p>
               <ul className="list-disc space-y-2 pl-6 marker:text-[#247a76]">
                 <li>
-                  <strong className="text-slate-800">Contact form submissions and correspondence:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Contact form submissions and correspondence:
+                  </strong>{" "}
                   retained while an enquiry is active and for any necessary
                   follow-up or record-keeping. Older correspondence will be
                   reviewed periodically and deleted when it is no longer
@@ -530,23 +528,30 @@ export default function PrivacyPolicy() {
                   retain it.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Technical and security logs:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Technical and security logs:
+                  </strong>{" "}
                   retained according to the operational, security and logging
                   requirements of the relevant systems.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Third-party records:</strong>{" "}
+                  <strong className="text-slate-800">
+                    Third-party records:
+                  </strong>{" "}
                   may be subject to separate retention periods under the
                   relevant provider's policies and service settings.
                 </li>
               </ul>
               <p>
-                When information is no longer required, it will be deleted
-                or anonymised where appropriate and technically practicable.
+                When information is no longer required, it will be deleted or
+                anonymised where appropriate and technically practicable.
               </p>
             </PolicySection>
 
-            <PolicySection id="security" title="11. How we protect your information">
+            <PolicySection
+              id="security"
+              title="11. How we protect your information"
+            >
               <p>
                 We take reasonable technical and organisational measures to
                 protect information against unauthorised access, accidental
@@ -554,8 +559,8 @@ export default function PrivacyPolicy() {
               </p>
               <p>
                 Measures may include secure connections, access controls,
-                appropriate server configuration, system updates and
-                restricted access to infrastructure.
+                appropriate server configuration, system updates and restricted
+                access to infrastructure.
               </p>
               <p>
                 No website or method of transmitting information over the
@@ -565,13 +570,13 @@ export default function PrivacyPolicy() {
 
             <PolicySection id="rights" title="12. Your data protection rights">
               <p>
-                Depending on the circumstances and applicable law, you may
-                have the right to:
+                Depending on the circumstances and applicable law, you may have
+                the right to:
               </p>
               <ul className="list-disc space-y-3 pl-6 marker:text-[#247a76]">
                 <li>
-                  <strong className="text-slate-800">Access:</strong> request
-                  a copy of the personal information we hold about you.
+                  <strong className="text-slate-800">Access:</strong> request a
+                  copy of the personal information we hold about you.
                 </li>
                 <li>
                   <strong className="text-slate-800">Rectification:</strong>{" "}
@@ -616,13 +621,13 @@ export default function PrivacyPolicy() {
             <PolicySection id="complaints" title="13. Complaints">
               <p>
                 If you have concerns about how your personal information is
-                handled, please contact us first so that we can try to
-                resolve the issue.
+                handled, please contact us first so that we can try to resolve
+                the issue.
               </p>
               <p>
                 You also have the right to complain to the UK's Information
-                Commissioner's Office (ICO), which is responsible for
-                overseeing data protection in the UK.
+                Commissioner's Office (ICO), which is responsible for overseeing
+                data protection in the UK.
               </p>
               <p>
                 <PolicyLink href="https://ico.org.uk/">
@@ -633,9 +638,8 @@ export default function PrivacyPolicy() {
 
             <PolicySection id="children" title="14. Children's privacy">
               <p>
-                SUP Safer's core risk assessment functionality does not
-                require users to provide personal information or create an
-                account.
+                SUP Safer's core risk assessment functionality does not require
+                users to provide personal information or create an account.
               </p>
               <p>
                 We do not knowingly seek personal information from children
@@ -645,42 +649,48 @@ export default function PrivacyPolicy() {
               </p>
             </PolicySection>
 
-            <PolicySection id="third-party" title="15. Third-party websites and services">
+            <PolicySection
+              id="third-party"
+              title="15. Third-party websites and services"
+            >
               <p>
-                SUP Safer relies on external services for certain functions
-                and may link to third-party websites. These services are
-                operated independently and may have their own privacy
-                policies, terms and data-handling practices.
+                SUP Safer relies on external services for certain functions and
+                may link to third-party websites. These services are operated
+                independently and may have their own privacy policies, terms and
+                data-handling practices.
               </p>
               <p>
                 We encourage you to review the relevant policies before
                 providing personal information directly to a third party.
               </p>
               <p>
-                Environmental information supplied by third parties is used
-                to support the service. Their processing of technical data
+                Environmental information supplied by third parties is used to
+                support the service. Their processing of technical data
                 associated with requests is governed by their own practices.
               </p>
             </PolicySection>
 
-            <PolicySection id="changes" title="16. Changes to this Privacy Policy">
+            <PolicySection
+              id="changes"
+              title="16. Changes to this Privacy Policy"
+            >
               <p>
-                This Privacy Policy may be updated to reflect changes to
-                SUP Safer, its technical configuration, the services it uses
-                or applicable legal requirements.
+                This Privacy Policy may be updated to reflect changes to SUP
+                Safer, its technical configuration, the services it uses or
+                applicable legal requirements.
               </p>
               <p>
-                The latest version will be published on this page, together
-                with the date on which it was last updated. We encourage you
-                to review this page periodically.
+                The latest version will be published on this page, together with
+                the date on which it was last updated. We encourage you to
+                review this page periodically.
               </p>
             </PolicySection>
 
             <PolicySection id="contact" title="17. Contact us">
               <p>
-                If you have questions about this Privacy Policy, the
-                information we process or your data protection rights, you
-                can contact the website operator using the details below.
+                If you have questions about this Privacy Policy, the information
+                we process or your data protection rights, you can contact the
+                website operator using the details below.
               </p>
 
               <div className="rounded-2xl border border-teal-100 bg-[#eef9f5] p-5 sm:p-7">
@@ -712,9 +722,7 @@ export default function PrivacyPolicy() {
                   </div>
 
                   <div className="min-w-0">
-                    <p className="font-bold text-slate-900">
-                      Thomas Bowden
-                    </p>
+                    <p className="font-bold text-slate-900">Thomas Bowden</p>
                     <p className="mt-1 text-sm text-slate-600">
                       Independent developer of SUP Safer
                     </p>
@@ -738,10 +746,10 @@ export default function PrivacyPolicy() {
             {/* Footer note */}
             <div className="border-t border-slate-200 py-7">
               <p className="text-sm leading-6 text-slate-500">
-                This policy was last updated on {lastUpdated}. It describes
-                the intended handling of information by SUP Safer and should
-                be kept aligned with the website's actual technical
-                configuration and data-processing practices.
+                This policy was last updated on {lastUpdated}. It describes the
+                intended handling of information by SUP Safer and should be kept
+                aligned with the website's actual technical configuration and
+                data-processing practices.
               </p>
               <a
                 href="#introduction"
@@ -767,7 +775,6 @@ export default function PrivacyPolicy() {
           </article>
         </div>
       </div>
-
     </main>
   );
 }
