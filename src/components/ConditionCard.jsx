@@ -149,7 +149,7 @@ const getCompassDirection = (degrees) => {
               {value}
               {wind && details}
               {wave && details}
-              {direction && details + getCompassDirection(value)}
+              {direction && details + " " + getCompassDirection(value)}
               {tide && details}
               {waterTemp && details}
               </>

@@ -43,10 +43,10 @@ export default function Footer() {
               </Link>
 
               <Link
-                to="/about"
+                to="/privacy-policy"
                 className="w-fit text-sm text-gray-500 transition hover:text-[#247a76]"
               >
-                About SUP Safer
+                Privacy Policy
               </Link>
 
               <Link
